@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:ital@1&family=Ubuntu:wght@300;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #f4f4f0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f4f4f0;
+  padding: 0;
+}
+
+.medikid-frame {
+  position: relative;
+  width: 393px;
+  height: 852px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 22px 70px rgba(45, 52, 45, 0.22);
+  flex: 0 0 auto;
+}
+
+.medikid-background {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 395px;
+  height: 854px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.medikid-glass-card {
+  position: absolute;
+  left: 48px;
+  top: 474px;
+  width: 299px;
+  height: 350px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.medikid-features {
+  position: absolute;
+  left: 47px;
+  top: 144px;
+  width: 299px;
+  height: 167px;
+  color: #ffffff;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 15.2px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.152px;
+  text-shadow: 0 1px 2px #677d72;
+  opacity: 0.99;
+}
+
+.medikid-features p {
+  margin: 0;
+}
+
+.medikid-features .feature-title {
+  font-weight: 500;
+}
+
+.feature-gap {
+  height: 18px;
+}
+
+.medikid-logo {
+  position: absolute;
+  left: 48px;
+  top: 396px;
+  width: 298px;
+  height: 59px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.medikid-title {
+  position: absolute;
+  left: 50%;
+  top: 575px;
+  transform: translate(-50%, -100%);
+  width: max-content;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 33px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.33px;
+  text-align: center;
+  text-shadow: 0 1px 3px #7f8d86;
+  white-space: nowrap;
+}
+
+.medikid-title span {
+  display: block;
+}
+
+.medikid-script {
+  position: absolute;
+  left: 50%;
+  top: 626px;
+  transform: translate(-50%, -100%);
+  width: max-content;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.44px;
+  text-align: center;
+  text-shadow: 0 1px 2px #8b9992;
+  white-space: nowrap;
+}
+
+.medikid-subtitle {
+  position: absolute;
+  left: 50%;
+  top: 682px;
+  transform: translate(-50%, -100%);
+  width: max-content;
+  margin: 0;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.medikid-subtitle span {
+  display: block;
+}
+
+.medikid-button {
+  position: absolute;
+  left: 73px;
+  top: 708px;
+  width: 247px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background: linear-gradient(90deg, #b5b3a9 0%, #dfa1aa 100%);
+  box-shadow: inset 0 4px 4px -1px rgba(12, 12, 13, 0.05);
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.medikid-button span {
+  position: absolute;
+  left: 26px;
+  top: 15px;
+  white-space: nowrap;
+}
+
+.medikid-button img {
+  position: absolute;
+  left: 212px;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.medikid-login {
+  position: absolute;
+  left: 50%;
+  top: 799px;
+  transform: translate(-50%, -100%);
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .app-shell {
+    padding: 24px;
+  }
+}
