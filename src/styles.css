@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:ital@1&family=Ubuntu:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:ital@1&family=Ubuntu:wght@300;400;500&display=swap');
 
 * {
   box-sizing: border-box;
@@ -17,8 +17,14 @@ body {
 }
 
 button,
-a {
+a,
+input {
+  font: inherit;
   -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  border: 0;
 }
 
 .app-shell {
@@ -40,7 +46,7 @@ a {
   flex: 0 0 auto;
 }
 
-.medikid-background {
+.landing-background {
   position: absolute;
   left: 0;
   top: -1px;
@@ -52,7 +58,7 @@ a {
   user-select: none;
 }
 
-.medikid-glass-card {
+.landing-glass-card {
   position: absolute;
   left: 48px;
   top: 474px;
@@ -62,7 +68,7 @@ a {
   background: rgba(255, 255, 255, 0.38);
 }
 
-.medikid-features {
+.landing-features {
   position: absolute;
   left: 47px;
   top: 144px;
@@ -78,11 +84,11 @@ a {
   opacity: 0.99;
 }
 
-.medikid-features p {
+.landing-features p {
   margin: 0;
 }
 
-.medikid-features .feature-title {
+.landing-features .feature-title {
   font-weight: 500;
 }
 
@@ -90,7 +96,7 @@ a {
   height: 18px;
 }
 
-.medikid-logo {
+.landing-logo {
   position: absolute;
   left: 48px;
   top: 396px;
@@ -102,7 +108,7 @@ a {
   user-select: none;
 }
 
-.medikid-title {
+.landing-title {
   position: absolute;
   left: 50%;
   top: 575px;
@@ -120,11 +126,11 @@ a {
   white-space: nowrap;
 }
 
-.medikid-title span {
+.landing-title span {
   display: block;
 }
 
-.medikid-script {
+.landing-script {
   position: absolute;
   left: 50%;
   top: 626px;
@@ -143,7 +149,7 @@ a {
   white-space: nowrap;
 }
 
-.medikid-subtitle {
+.landing-subtitle {
   position: absolute;
   left: 50%;
   top: 682px;
@@ -159,11 +165,11 @@ a {
   white-space: nowrap;
 }
 
-.medikid-subtitle span {
+.landing-subtitle span {
   display: block;
 }
 
-.medikid-button {
+.landing-button {
   position: absolute;
   left: 73px;
   top: 708px;
@@ -185,14 +191,14 @@ a {
   cursor: pointer;
 }
 
-.medikid-button span {
+.landing-button span {
   position: absolute;
   left: 26px;
   top: 15px;
   white-space: nowrap;
 }
 
-.medikid-button img {
+.landing-button img {
   position: absolute;
   left: 212px;
   top: 16px;
@@ -201,11 +207,14 @@ a {
   pointer-events: none;
 }
 
-.medikid-login {
+.landing-login {
   position: absolute;
   left: 50%;
   top: 799px;
   transform: translate(-50%, -100%);
+  margin: 0;
+  padding: 0;
+  background: transparent;
   color: #2d342d;
   font-family: "Ubuntu", Arial, sans-serif;
   font-size: 16px;
@@ -214,6 +223,867 @@ a {
   text-align: center;
   text-decoration: underline;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.signin-page {
+  background: linear-gradient(0deg, #f2cbd3 0%, #acdfc9 100%);
+}
+
+.signin-logo {
+  position: absolute;
+  left: 65px;
+  top: 90px;
+  width: 264px;
+  height: 52px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.signin-tagline {
+  position: absolute;
+  left: 50%;
+  top: 172px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.signin-divider {
+  position: absolute;
+  left: 47px;
+  top: 219px;
+  width: 302px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(45, 52, 45, 0.55);
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+}
+
+.signin-divider span {
+  width: 80px;
+  height: 1px;
+  background: rgba(45, 52, 45, 0.35);
+  flex: 0 0 auto;
+}
+
+.signin-divider p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.social-button {
+  position: absolute;
+  left: 47px;
+  width: 300px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border-radius: 15px;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.google-button {
+  top: 252px;
+}
+
+.apple-button {
+  top: 314px;
+}
+
+.social-button img {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.google-button img {
+  left: 29px;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+}
+
+.apple-button img {
+  left: 29px;
+  top: 13px;
+  width: 16px;
+  height: 20px;
+}
+
+.social-button span {
+  position: absolute;
+  left: 61px;
+  top: 14px;
+  white-space: nowrap;
+}
+
+.email-separator {
+  position: absolute;
+  left: 50%;
+  top: 417px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  color: rgba(45, 52, 45, 0.55);
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.field-label {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.email-label {
+  left: 112px;
+  top: 449px;
+}
+
+.password-label {
+  left: 112.5px;
+  top: 533px;
+}
+
+.signin-field {
+  position: absolute;
+  left: 47px;
+  width: 300px;
+  height: 50px;
+  margin: 0;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 15px;
+  outline: 0;
+  background: #ffffff;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.18px;
+}
+
+.signin-field::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.email-field {
+  top: 455px;
+}
+
+.password-field {
+  top: 542px;
+}
+
+.signin-button {
+  position: absolute;
+  left: 47px;
+  top: 627px;
+  width: 300px;
+  height: 60.729px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 40px;
+  background: #bdd5c6;
+  box-shadow: inset 0 4px 4px -1px rgba(12, 12, 13, 0.05);
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.signin-button span {
+  position: absolute;
+  left: 39px;
+  top: 21px;
+  white-space: nowrap;
+}
+
+.signin-button img {
+  position: absolute;
+  left: 257.49px;
+  top: 19.43px;
+  width: 21.862px;
+  height: 21.862px;
+  pointer-events: none;
+}
+
+.forgot-password {
+  position: absolute;
+  left: 50%;
+  top: 719px;
+  transform: translate(-50%, -100%);
+  color: #8a6b6f;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  text-align: center;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.signin-account-row {
+  position: absolute;
+  left: 50%;
+  top: 750px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #8a6b6f;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.signin-account-row a {
+  color: #8a6b6f;
+  text-decoration: underline;
+}
+
+.signin-terms {
+  position: absolute;
+  left: 50%;
+  top: 825px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  color: rgba(0, 0, 0, 0.32);
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.14px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.drive-placeholder-page,
+.connect-cloud-page {
+  background:
+    radial-gradient(circle at 22% 8%, rgba(255, 255, 255, 0.58) 0, rgba(255, 255, 255, 0) 34%),
+    linear-gradient(0deg, #f2cbd3 0%, #f6ded9 23%, #dce6dc 59%, #acdfc9 100%);
+}
+
+.add-child-page {
+  background: linear-gradient(0deg, #f2cbd3 0%, #acdfc9 100%);
+}
+
+.add-child-logo {
+  position: absolute;
+  left: 139px;
+  top: 93px;
+  width: 122px;
+  height: 24px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.add-child-progress {
+  position: absolute;
+  left: 139px;
+  top: 138px;
+  width: 121px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.add-progress-line {
+  width: 38px;
+  height: 6px;
+  border-radius: 550px;
+  background: #9acbb4;
+  flex: 0 0 auto;
+}
+
+.add-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #9acbb4;
+  flex: 0 0 auto;
+}
+
+.add-progress-dot.muted {
+  background: #bfa1aa;
+}
+
+.add-progress-text {
+  margin-left: 5px;
+  color: #777777;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.add-child-title {
+  position: absolute;
+  left: 50%;
+  top: 196px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  color: #2d342d;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.add-child-subtitle {
+  position: absolute;
+  left: 50%;
+  top: 243px;
+  transform: translate(-50%, -100%);
+  width: 244px;
+  height: 40px;
+  margin: 0;
+  color: rgba(45, 52, 45, 0.55);
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.add-child-subtitle span {
+  display: block;
+}
+
+.photo-section {
+  position: absolute;
+  left: 50%;
+  top: 252px;
+  transform: translateX(-50%);
+  width: 300px;
+  text-align: center;
+}
+
+.add-child-label {
+  display: block;
+  margin: 0 0 6px 12px;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.add-child-form {
+  position: absolute;
+  left: 50px;
+  top: 399px;
+  width: 300px;
+}
+
+.birth-label,
+.doctor-label {
+  margin-top: 13px;
+}
+
+.add-child-input {
+  display: block;
+  width: 300px;
+  height: 50px;
+  margin: 0;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 15px;
+  outline: 0;
+  background: #ffffff;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  box-shadow: none;
+}
+
+.add-child-input::placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  opacity: 1;
+}
+
+.photo-placeholder {
+  width: 71px;
+  height: 71px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #f0f8f3;
+  color: #406f5d;
+  box-shadow: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.photo-placeholder span {
+  display: block;
+  margin-top: -3px;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.photo-action {
+  margin: 12px 0 0;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.photo-note,
+.doctor-note {
+  margin: 3px 0 0;
+  color: #5f6c5f;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.doctor-note {
+  width: 300px;
+  height: 17px;
+  margin: 7px 0 0;
+  color: #8a6b6f;
+  font-size: 14px;
+  text-align: center;
+}
+
+.add-child-primary {
+  position: absolute;
+  left: 50px;
+  top: 698px;
+  width: 300px;
+  height: 60.729px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 40px;
+  background: #bdd5c6;
+  box-shadow: inset 0 4px 4px -1px rgba(12, 12, 13, 0.05);
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-child-secondary {
+  position: absolute;
+  left: 50%;
+  top: 783px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #8a6b6f;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.14px;
+  text-align: center;
+  text-decoration: underline;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.placeholder-logo {
+  position: absolute;
+  left: 65px;
+  top: 110px;
+  width: 264px;
+  height: 52px;
+  max-width: none;
+  object-fit: cover;
+}
+
+.placeholder-card {
+  position: absolute;
+  left: 47px;
+  top: 338px;
+  width: 300px;
+  height: 176px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.54);
+  box-shadow: 0 18px 48px rgba(88, 94, 89, 0.12);
+}
+
+.placeholder-card p {
+  margin: 0;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+}
+
+.connect-cloud-logo {
+  position: absolute;
+  left: 139px;
+  top: 93px;
+  width: 122px;
+  height: 24px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.connect-progress {
+  position: absolute;
+  left: 141px;
+  top: 138px;
+  width: 119px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #9acbb4;
+  flex: 0 0 auto;
+}
+
+.progress-dot.muted {
+  background: #bfa1aa;
+}
+
+.progress-line {
+  width: 38px;
+  height: 6px;
+  border-radius: 550px;
+  background: #9acbb4;
+  flex: 0 0 auto;
+}
+
+.progress-text {
+  margin-left: 5px;
+  color: #777777;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.connect-title {
+  position: absolute;
+  left: 50%;
+  top: 196px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  color: #2d342d;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.connect-intro {
+  position: absolute;
+  left: 50%;
+  top: 291px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  color: rgba(45, 52, 45, 0.72);
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.connect-intro span {
+  display: block;
+}
+
+.cloud-card {
+  position: absolute;
+  left: 33px;
+  width: 333px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.google-drive-card {
+  top: 311px;
+  height: 173px;
+}
+
+.icloud-card {
+  top: 497px;
+  height: 113px;
+}
+
+.cloud-icon {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.google-drive-icon {
+  left: 15px;
+  top: 17px;
+  width: 30px;
+  height: 31px;
+}
+
+.icloud-icon {
+  left: 15px;
+  top: 21px;
+  width: 30px;
+  height: 20px;
+}
+
+.cloud-title {
+  position: absolute;
+  left: 53px;
+  top: 18px;
+  margin: 0;
+  color: #2d342d;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.cloud-description {
+  position: absolute;
+  left: 53px;
+  margin: 0;
+  color: rgba(45, 52, 45, 0.68);
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.google-drive-card .cloud-description {
+  top: 62px;
+}
+
+.icloud-card .cloud-description {
+  top: 59px;
+}
+
+.cloud-description span {
+  display: block;
+}
+
+.cloud-badge {
+  position: absolute;
+  top: 18px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: #ffffff;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.recommended-badge {
+  right: 16px;
+  width: 120px;
+  background: #b8ccbf;
+}
+
+.soon-badge {
+  right: 16px;
+  width: 140px;
+  background: #cec7c7;
+}
+
+.cloud-connect-button {
+  position: absolute;
+  left: 35px;
+  top: 115px;
+  width: 261px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  background: #bdc4bd;
+  color: #ffffff;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.privacy-shield {
+  position: absolute;
+  left: 126px;
+  top: 637px;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.privacy-title {
+  position: absolute;
+  left: 159px;
+  top: 660px;
+  transform: translateY(-100%);
+  margin: 0;
+  color: #ffffff;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.16px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.privacy-copy {
+  position: absolute;
+  left: 63px;
+  top: 685px;
+  transform: translateY(-100%);
+  margin: 0;
+  color: #685053;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+
+.connect-continue-button {
+  position: absolute;
+  left: 50px;
+  top: 698px;
+  width: 300px;
+  height: 60.729px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 40px;
+  background: #bdd5c6;
+  box-shadow: inset 0 4px 4px -1px rgba(12, 12, 13, 0.05);
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.connect-later-button {
+  position: absolute;
+  left: 50%;
+  top: 783px;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #8a6b6f;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.14px;
+  text-align: center;
+  text-decoration: underline;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {
