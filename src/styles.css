@@ -1531,13 +1531,62 @@ svg {
   opacity: 0.76;
 }
 
-(255, 255, 255, 0.75);
+.dashboard-invite-icon::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  width: 8px;
+  height: 5px;
+  border-left: 1.5px solid #5e4d50;
+  border-bottom: 1.5px solid #5e4d50;
+  transform: rotate(-45deg);
+}
+
+.dashboard-child-selector {
+  position: absolute;
+  left: 18px;
+  top: 211px;
+  width: 360px;
+  display: grid;
+  grid-template-columns: 96px 96px 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.dashboard-child-selector button {
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 0 10px 0 6px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.36);
+  color: rgba(45, 52, 45, 0.58);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.dashboard-child-selector button span {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
   color: rgba(45, 52, 45, 0.58);
   font-size: 12px;
   line-height: 1;
 }
+
 .dashboard-child-selector button.active {
   background: #a9e6cd;
+  color: #2d342d;
+}
+
+.dashboard-child-selector button.active span {
   color: #2d342d;
 }
 
