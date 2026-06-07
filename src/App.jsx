@@ -453,11 +453,26 @@ function DashboardPage() {
             <div className="dashboard-line-chart" aria-hidden="true"><span className="point a" /><span className="point b" /><span className="point c" /><span className="chart-line one" /><span className="chart-line two" /></div>
             <button type="button">Voir le suivi détaillé</button>
           </div>
-          <div className="dashboard-mini-card vaccine-card">
-            <h2><img className="dashboard-mini-title-icon" src={vaccineIcon} alt="" />VACCINATIONS</h2>
-            <div className="dashboard-vaccine-circle">3/5<br /><span>à jour</span></div>
-            <p>Lucas est à jour sur les vaccins obligatoires.</p>
-            <button type="button">Voir le calendrier vaccinal</button>
+          <div className="dashboard-mini-card vaccine-card dashboard-vaccine-card">
+            <div className="dashboard-vaccine-card-header">
+              <img src={vaccineIcon} alt="" className="dashboard-vaccine-title-icon" />
+              <span>VACCINATIONS</span>
+            </div>
+
+            <div className="dashboard-vaccine-card-body">
+              <div className="dashboard-vaccine-progress" aria-hidden="true">
+                <span className="dashboard-vaccine-progress-number"><strong>3</strong><span>/5</span></span>
+                <span className="dashboard-vaccine-progress-label">à jour</span>
+              </div>
+
+              <p className="dashboard-vaccine-text">
+                Lucas est à jour sur les vaccins obligatoires.
+              </p>
+            </div>
+
+            <button type="button" className="dashboard-vaccine-link">
+              Voir le calendrier vaccinal
+            </button>
           </div>
         </section>
 

@@ -2030,14 +2030,15 @@ svg {
 }
 
 .dashboard-mini-grid {
-  display: grid;
-  grid-template-columns: 177px 177px;
+  display: flex;
+  align-items: flex-start;
   gap: 6px;
   margin: 27px 0 38px;
 }
 
 .dashboard-mini-card {
   position: relative;
+  width: 177px;
   height: 207px;
   overflow: hidden;
   padding: 50px 10px 0;
@@ -2046,7 +2047,26 @@ svg {
   background: #ffffff;
 }
 
+.dashboard-mini-card.growth-card {
+  width: 177px;
+  min-width: 177px;
+  max-width: 177px;
+  height: 207px;
+  min-height: 207px;
+  max-height: 207px;
+  flex: 0 0 177px;
+  box-sizing: border-box;
+}
+
 .dashboard-mini-card.vaccine-card {
+  width: 177px;
+  min-width: 177px;
+  max-width: 177px;
+  height: 207px;
+  min-height: 207px;
+  max-height: 207px;
+  box-sizing: border-box;
+  flex: 0 0 177px;
   border-color: #d3b4b7;
 }
 
@@ -2210,6 +2230,202 @@ svg {
 .dashboard-vaccine-circle span {
   font-size: 11px;
   font-weight: 300;
+}
+
+.dashboard-vaccine-card {
+  width: 177px;
+  height: 207px;
+  min-width: 177px;
+  max-width: 177px;
+  min-height: 207px;
+  max-height: 207px;
+  flex: 0 0 177px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 2px solid #d3b4b7;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.vaccine-card.dashboard-vaccine-card {
+  width: 177px;
+  min-width: 177px;
+  max-width: 177px;
+  height: 207px;
+  min-height: 207px;
+  max-height: 207px;
+  box-sizing: border-box;
+  flex: 0 0 177px;
+}
+
+.dashboard-mini-card.vaccine-card,
+.dashboard-vaccine-card,
+.vaccine-card.dashboard-vaccine-card {
+  width: 177px !important;
+  min-width: 177px !important;
+  max-width: 177px !important;
+  height: 207px !important;
+  min-height: 207px !important;
+  max-height: 207px !important;
+  box-sizing: border-box;
+  flex: 0 0 177px !important;
+}
+
+.dashboard-mini-grid > .dashboard-mini-card.vaccine-card.dashboard-vaccine-card {
+  inline-size: 177px !important;
+  block-size: 207px !important;
+  width: 177px !important;
+  min-width: 177px !important;
+  max-width: 177px !important;
+  height: 207px !important;
+  min-height: 207px !important;
+  max-height: 207px !important;
+  justify-self: start;
+  align-self: start;
+  box-sizing: border-box;
+}
+
+.dashboard-vaccine-card-header {
+  height: 33px;
+  flex-shrink: 0;
+  background: #d3b4b7;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 18px 18px 0 0;
+}
+
+.dashboard-vaccine-title-icon {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+.dashboard-vaccine-card-header span {
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dashboard-vaccine-card-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  flex: 1;
+  padding: 20px 8px 0;
+  box-sizing: border-box;
+  transform: translateY(5px);
+}
+
+.dashboard-vaccine-progress {
+  position: relative;
+  width: 69.5px;
+  height: 69.5px;
+  border-radius: 999px;
+  background: conic-gradient(#d3b4b7 0deg 216deg, #efefef 216deg 360deg);
+  color: #685053;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  margin-left: -3px;
+}
+
+.dashboard-vaccine-progress::before {
+  content: "";
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.dashboard-vaccine-progress-number {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #685053;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dashboard-vaccine-progress-number strong {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.dashboard-vaccine-progress-number span {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.dashboard-vaccine-progress-label {
+  position: relative;
+  z-index: 1;
+  color: #685053;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+
+.dashboard-vaccine-card .dashboard-vaccine-text {
+  position: static;
+  width: 81px;
+  margin: 0 0 0 -2px;
+  color: #685053;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+.dashboard-vaccine-card .dashboard-vaccine-link {
+  position: static;
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #685053;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 12px 8px;
+  margin: auto 0 0;
+  transform: translateY(3px);
+}
+
+.dashboard-vaccine-progress-number,
+.dashboard-vaccine-progress-number strong,
+.dashboard-vaccine-progress-number span,
+.dashboard-vaccine-progress-label,
+.dashboard-vaccine-text,
+.dashboard-vaccine-link {
+  color: #685053;
 }
 
 .dashboard-block-title {
