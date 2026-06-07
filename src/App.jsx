@@ -1,42 +1,43 @@
 import { useState } from 'react';
-import googleDriveIcon from './assets/Google_Drive_icon_(2020).svg';
+import landingBackgroundImage from './assets/landing-background.png.jpg';
+import medikidGreenLogo from './assets/MediKid_logo_green.png';
+import medikidInternalWhiteLogo from './assets/MediKid_logo_white.png';
+import googleIcon from './assets/Google_Favicon_2025.svg 1.svg';
+import appleIcon from './assets/Apple_logo_black.svg 1.svg';
+import googleDriveLogo from './assets/250px-Google_Drive_logo.png';
+import iCloudLogo from './assets/iCloud logo.svg';
+import googleDriveIcon from './assets/Drive_icon.svg';
+import fileCheckIcon from './assets/file-check 1.svg';
+import folderInputIcon from './assets/folder-input 1.svg';
+import chooseDriveIcon from './assets/Choisir-depuis-drive-icon.svg';
+import scanIcon from './assets/scan 1.svg';
+import botIconImage from './assets/bot 1.svg';
+import loaderIcon from './assets/loader 1.svg';
+import userIcon from './assets/user 1.svg';
+import sproutIcon from './assets/sprout 2.svg';
+import accueilIcon from './assets/accueil-icon.svg';
+import addDocumentIcon from './assets/ajouter-document-icon.svg';
+import iaChatIcon from './assets/ia-chat-icon.svg';
 import shieldCheckIcon from './assets/shield-check1.svg';
 import dentistIcon from './assets/dentist-icon.svg';
 import eyeIcon from './assets/eye-icon.svg';
+import orlIcon from './assets/orl_icon.svg';
+import vaccineIcon from './assets/tabler_vaccine.svg';
 import calendarIcon from './assets/calendar.svg';
 import calendarSyncIcon from './assets/calendar-sync.svg';
 import bellIcon from './assets/bell.svg';
-
-const familyImage = 'https://www.figma.com/api/mcp/asset/968e2961-6c35-480b-996b-7d58ff3bcabf';
-const landingLogoImage = 'https://www.figma.com/api/mcp/asset/f376237e-aa39-4bb7-9e82-654cbf36cad0';
-const landingArrowImage = 'https://www.figma.com/api/mcp/asset/54eb4a5e-9d62-4076-bd10-1d4fdeda4c61';
-const signInLogoImage = 'https://www.figma.com/api/mcp/asset/598e41df-9e30-4d5e-93e2-cd1dd3630578';
-const appleLogoImage = 'https://www.figma.com/api/mcp/asset/2cb2ea56-f698-4d0f-9e6d-6741341365f4';
-const googleLogoImage = 'https://www.figma.com/api/mcp/asset/fe32af97-12f6-47d6-9993-40c295e57a62';
-const signInArrowImage = 'https://www.figma.com/api/mcp/asset/cef5e838-b602-43c5-a546-07e54277eedd';
-const addChildLogoImage = 'https://www.figma.com/api/mcp/asset/4f12d535-416f-466b-bb19-a4d43ad2be5f';
-const connectLogoImage = 'https://www.figma.com/api/mcp/asset/23768e1b-4859-4042-b062-2e889d0d6575';
-const scanLogoImage = 'https://www.figma.com/api/mcp/asset/b9dc3132-e91a-477e-be78-355353718128';
-const scanIconImage = 'https://www.figma.com/api/mcp/asset/9d99c0e4-e706-48eb-84bd-d42fbb2f80fc';
-const importIconImage = 'https://www.figma.com/api/mcp/asset/d0d97887-5ee5-46ef-bd7c-4a38f60bfc0c';
-const cloudIconImage = 'https://www.figma.com/api/mcp/asset/7bb794b8-65bd-4bc8-b9ff-8376537ac091';
-const botIconImage = 'https://www.figma.com/api/mcp/asset/ec3d3efa-c221-4fd2-a91f-7b761dc87bec';
-const analyzeLogoImage = 'https://www.figma.com/api/mcp/asset/68a822c6-68c2-46bd-ab7e-2fab7ac10a36';
-const analyzeCheckIconImage = 'https://www.figma.com/api/mcp/asset/c6a6d1cc-8d70-4fa5-800a-5d3cfa1ec996';
-const analyzeLoaderIconImage = 'https://www.figma.com/api/mcp/asset/b8def988-7cf8-4c76-a730-0bc67ca0f16f';
-const spaceReadyLogoImage = 'https://www.figma.com/api/mcp/asset/94e67785-f991-4cd7-8b7a-1ee0cc4ec383';
-const spaceReadyArrowImage = 'https://www.figma.com/api/mcp/asset/4754c11b-404c-4240-a3d0-8c32b4963691';
-const spaceReadyUserIconImage = 'https://www.figma.com/api/mcp/asset/9299eb7c-850f-4841-a692-60d8ef32a252';
-const spaceReadyCloudIconImage = 'https://www.figma.com/api/mcp/asset/8addc45e-ca1a-40b4-bdff-afc38e079a59';
-const spaceReadyDocumentIconImage = 'https://www.figma.com/api/mcp/asset/bce1e3ca-4d8d-4ccd-913c-44f4bd0f18d1';
-const spaceReadyGrowthIconImage = 'https://www.figma.com/api/mcp/asset/bbedb773-a917-4f32-9d87-3483cb5b6182';
-const dashboardChildPhoto = 'https://www.figma.com/api/mcp/asset/771ad697-38aa-4f30-8927-0a393133ad8e';
-const dashboardQrIcon = 'https://www.figma.com/api/mcp/asset/76c9fcd3-2ac1-438e-a299-f60b9bc45d09';
+import inviteIcon from './assets/mail 1.svg';
+import crownIcon from './assets/crown.svg';
+import checkIcon from './assets/check 1.svg';
+import arrowRightIcon from './assets/arrow-right 1.svg';
+import arrowRightActionIcon from './assets/arrow-right 2.svg';
+import arrowTriangleIcon from './assets/arrow_triangle.svg';
 
 function LandingPage({ onSignIn }) {
   return (
     <section className="medikid-frame landing-page" aria-label="MediKid landing page">
-      <img className="landing-background" src={familyImage} alt="" />
+      <img className="landing-background" src={landingBackgroundImage} alt="" />
+      <div className="landing-overlay" aria-hidden="true" />
       <div className="landing-glass-card" />
 
       <div className="landing-features">
@@ -50,7 +51,7 @@ function LandingPage({ onSignIn }) {
         <p>Analyse, classement, rappels automatiques</p>
       </div>
 
-      <img className="landing-logo" src={landingLogoImage} alt="medikid" />
+      <img className="landing-logo" src={medikidGreenLogo} alt="MediKid" />
       <h1 className="landing-title">
         <span>LA SANTÉ DE</span>
         <span>VOS ENFANTS,</span>
@@ -62,10 +63,10 @@ function LandingPage({ onSignIn }) {
       </p>
       <button className="landing-button" type="button" onClick={onSignIn}>
         <span>CRÉER MON COMPTE</span>
-        <img src={landingArrowImage} alt="" />
+        <img src={arrowRightIcon} alt="" />
       </button>
       <button className="landing-login" type="button" onClick={onSignIn}>
-        Déjà un compte?
+        Déjà un compte ?
       </button>
     </section>
   );
@@ -74,7 +75,7 @@ function LandingPage({ onSignIn }) {
 function SignInPage({ onAddChild }) {
   return (
     <section className="medikid-frame signin-page" aria-label="Connexion MediKid">
-      <img className="signin-logo" src={signInLogoImage} alt="medikid" />
+      <img className="signin-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <p className="signin-tagline">Votre secrétaire médical privé</p>
 
       <div className="signin-divider" aria-hidden="true">
@@ -84,11 +85,11 @@ function SignInPage({ onAddChild }) {
       </div>
 
       <button className="social-button google-button" type="button" onClick={onAddChild}>
-        <img src={googleLogoImage} alt="" />
+        <img src={googleIcon} alt="" />
         <span>Continuer avec Google</span>
       </button>
       <button className="social-button apple-button" type="button" onClick={onAddChild}>
-        <img src={appleLogoImage} alt="" />
+        <img src={appleIcon} alt="" />
         <span>Continuer avec Apple</span>
       </button>
 
@@ -100,7 +101,7 @@ function SignInPage({ onAddChild }) {
 
       <button className="signin-button" type="button" onClick={onAddChild}>
         <span>CRÉER MON COMPTE</span>
-        <img src={signInArrowImage} alt="" />
+        <img src={arrowRightIcon} alt="" />
       </button>
       <a className="forgot-password" href="#">Mot de passe oublié?</a>
       <div className="signin-account-row">
@@ -119,7 +120,7 @@ function SignInPage({ onAddChild }) {
 function AddChildPage({ onContinue }) {
   return (
     <section className="medikid-frame add-child-page" aria-label="Ajouter un enfant">
-      <img className="add-child-logo" src={addChildLogoImage} alt="medikid" />
+      <img className="add-child-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="add-child-progress" aria-label="Étape 1 sur 4">
         <span className="add-progress-line" />
         <span className="add-progress-dot muted" />
@@ -135,7 +136,7 @@ function AddChildPage({ onContinue }) {
 
       <div className="photo-section">
         <button className="photo-placeholder" type="button" aria-label="Ajouter une photo">
-          <span>+</span>
+          <span className="add-child-photo-plus" aria-hidden="true" />
         </button>
         <p className="photo-action">Ajouter une photo</p>
         <p className="photo-note">Optionnel</p>
@@ -146,9 +147,9 @@ function AddChildPage({ onContinue }) {
         <input className="add-child-input" id="child-first-name" type="text" />
         <label className="add-child-label birth-label" htmlFor="child-birth-date">Date de naissance</label>
         <input className="add-child-input" id="child-birth-date" type="text" />
-        <label className="add-child-label doctor-label" htmlFor="child-doctor">Médecin traitant</label>
+        <label className="add-child-label doctor-label" htmlFor="child-doctor">Médecin traitant *</label>
         <input className="add-child-input" id="child-doctor" type="text" />
-        <p className="doctor-note">Optionnel, vous pourrez le compléter plus tard.</p>
+        <p className="doctor-note">* Optionnel, vous pourrez le compléter plus tard.</p>
       </div>
 
       <button className="add-child-primary" type="button" onClick={onContinue}>CONTINUER</button>
@@ -160,7 +161,7 @@ function AddChildPage({ onContinue }) {
 function ConnectCloudPage({ onContinue }) {
   return (
     <section className="medikid-frame connect-cloud-page" aria-label="Connectez votre cloud">
-      <img className="connect-cloud-logo" src={connectLogoImage} alt="medikid" />
+      <img className="connect-cloud-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="connect-progress" aria-label="Étape 2 sur 4">
         <span className="progress-dot" />
         <span className="progress-line" />
@@ -177,7 +178,7 @@ function ConnectCloudPage({ onContinue }) {
       </p>
 
       <div className="cloud-card google-drive-card">
-        <img className="cloud-icon google-drive-icon" src={googleDriveIcon} alt="" />
+        <img className="cloud-icon cloud-provider-logo google-drive-icon" src={googleDriveLogo} alt="" />
         <p className="cloud-title">Google Drive</p>
         <p className="cloud-description">
           <span>Active la création automatique</span>
@@ -188,7 +189,7 @@ function ConnectCloudPage({ onContinue }) {
       </div>
 
       <div className="cloud-card icloud-card">
-        <span className="cloud-icon icloud-icon" aria-hidden="true">☁</span>
+        <img className="cloud-icon cloud-provider-logo cloud-provider-logo-white icloud-icon" src={iCloudLogo} alt="" />
         <p className="cloud-title">iCloud</p>
         <p className="cloud-description">
           <span>Vos documents resteront</span>
@@ -209,7 +210,7 @@ function ConnectCloudPage({ onContinue }) {
 function ScanDocumentPage({ onContinue }) {
   return (
     <section className="medikid-frame scan-document-page" aria-label="Scannez un document">
-      <img className="scan-document-logo" src={scanLogoImage} alt="medikid" />
+      <img className="scan-document-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="scan-progress" aria-label="Étape 3 sur 4">
         <span className="scan-progress-dot active" />
         <span className="scan-progress-dot active" />
@@ -228,7 +229,7 @@ function ScanDocumentPage({ onContinue }) {
       </p>
 
       <div className="scan-main-card">
-        <img className="scan-main-icon" src={scanIconImage} alt="" />
+        <img className="document-scan-icon" src={scanIcon} alt="" />
         <p className="scan-main-title">Scanner un document</p>
         <p className="scan-main-copy">Prenez une photo avec votre téléphone</p>
         <button className="scan-main-button" type="button" onClick={onContinue}>Scanner un document</button>
@@ -236,14 +237,14 @@ function ScanDocumentPage({ onContinue }) {
 
       <button className="scan-option-card import-option-card" type="button">
         <span className="scan-option-icon-circle">
-          <img className="scan-import-icon" src={importIconImage} alt="" />
+          <img className="scan-import-icon" src={folderInputIcon} alt="" />
         </span>
         <span className="scan-option-title">Importer un PDF ou une image</span>
         <span className="scan-option-copy">Fichier reçu par email ou téléchargé</span>
       </button>
       <button className="scan-option-card drive-option-card" type="button">
         <span className="scan-option-icon-circle">
-          <img className="scan-drive-icon" src={cloudIconImage} alt="" />
+          <img className="scan-drive-icon" src={chooseDriveIcon} alt="" />
         </span>
         <span className="scan-option-title">Choisir depuis le Drive</span>
         <span className="scan-option-copy">
@@ -268,7 +269,7 @@ function ScanDocumentPage({ onContinue }) {
 function AnalyzeDocumentPage({ onContinue }) {
   return (
     <section className="medikid-frame analyze-document-page" aria-label="Analyse du document">
-      <img className="analyze-document-logo" src={analyzeLogoImage} alt="medikid" />
+      <img className="analyze-document-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="analyze-progress" aria-label="Étape 4 sur 4">
         <span className="analyze-progress-dot active" />
         <span className="analyze-progress-dot active" />
@@ -279,17 +280,17 @@ function AnalyzeDocumentPage({ onContinue }) {
       <h1 className="analyze-document-title">Analyse du document...</h1>
       <div className="analyze-card">
         <div className="analyze-row analyze-row-one">
-          <span className="analyze-icon-circle"><img className="analyze-check-icon" src={analyzeCheckIconImage} alt="" /></span>
+          <span className="analyze-icon-circle"><img className="analyze-check-icon" src={checkIcon} alt="" /></span>
           <span className="analyze-row-text">Document détecté</span>
         </div>
         <div className="analyze-divider analyze-divider-one" />
         <div className="analyze-row analyze-row-two">
-          <span className="analyze-icon-circle"><img className="analyze-check-icon" src={analyzeCheckIconImage} alt="" /></span>
+          <span className="analyze-icon-circle"><img className="analyze-check-icon" src={checkIcon} alt="" /></span>
           <span className="analyze-row-text">Type : Certificat médical</span>
         </div>
         <div className="analyze-divider analyze-divider-two" />
         <div className="analyze-row analyze-row-three">
-          <span className="analyze-icon-circle"><img className="analyze-loader-icon" src={analyzeLoaderIconImage} alt="" /></span>
+          <span className="analyze-icon-circle"><img className="analyze-loader-icon" src={loaderIcon} alt="" /></span>
           <span className="analyze-row-text loading">Lecture des informations utiles...</span>
         </div>
       </div>
@@ -301,7 +302,7 @@ function AnalyzeDocumentPage({ onContinue }) {
 function DocumentAnalyzedPage({ onConfirm }) {
   return (
     <section className="medikid-frame document-analyzed-page" aria-label="Document analysé">
-      <img className="document-analyzed-logo" src={analyzeLogoImage} alt="medikid" />
+      <img className="document-analyzed-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="document-analyzed-progress" aria-label="Étape 4 sur 4">
         <span className="document-analyzed-progress-dot active" />
         <span className="document-analyzed-progress-dot active" />
@@ -311,7 +312,7 @@ function DocumentAnalyzedPage({ onConfirm }) {
       </div>
       <h1 className="document-analyzed-title">
         DOCUMENT ANALYSÉ
-        <span className="document-analyzed-title-check" aria-hidden="true">✓</span>
+        <span className="document-analyzed-title-check"><img src={checkIcon} alt="" /></span>
       </h1>
       <div className="document-result-card">
         <p className="document-result-heading">CERTIFICAT MÉDICAL</p>
@@ -332,8 +333,8 @@ function DocumentAnalyzedPage({ onConfirm }) {
         </div>
       </div>
       <div className="document-actions-card">
-        <p className="document-action-line document-action-one"><span className="document-action-icon" aria-hidden="true">✓</span>Ajouté au suivi de croissance</p>
-        <p className="document-action-line document-action-two"><span className="document-action-icon" aria-hidden="true">✓</span>Classé dans Documents médicaux</p>
+        <p className="document-action-line document-action-one"><span className="document-action-icon"><img src={checkIcon} alt="" /></span>Ajouté au suivi de croissance</p>
+        <p className="document-action-line document-action-two"><span className="document-action-icon"><img src={checkIcon} alt="" /></span>Classé dans Documents médicaux</p>
         <p className="document-action-line document-action-three"><span className="document-action-icon" aria-hidden="true">!</span>Rappel possible détecté</p>
       </div>
       <button className="document-confirm-button" type="button" onClick={onConfirm}>CONFIRMER</button>
@@ -346,7 +347,7 @@ function DocumentAnalyzedPage({ onConfirm }) {
 function SpaceReadyPage({ onDashboard }) {
   return (
     <section className="medikid-frame space-ready-page" aria-label="Votre espace est prêt">
-      <img className="space-ready-logo" src={spaceReadyLogoImage} alt="medikid" />
+      <img className="space-ready-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <h1 className="space-ready-title">
         <span>Votre espace</span>
         <span>MediKid est prêt</span>
@@ -356,16 +357,16 @@ function SpaceReadyPage({ onDashboard }) {
         <span>Vous pouvez ajouter d&apos;autres documents,</span>
         <span>inviter un parent ou compléter son profil plus tard.</span>
       </p>
-      <div className="space-status-card space-status-child"><img className="space-status-icon user" src={spaceReadyUserIconImage} alt="" /><p>Lucas ajouté</p></div>
-      <div className="space-status-card space-status-drive"><img className="space-status-icon cloud" src={spaceReadyCloudIconImage} alt="" /><p>Drive connecté</p></div>
-      <div className="space-status-card space-status-document"><img className="space-status-icon document" src={spaceReadyDocumentIconImage} alt="" /><p>1 document analysé</p></div>
+      <div className="space-status-card space-status-child"><img className="space-status-icon user" src={userIcon} alt="" /><p>Lucas ajouté</p></div>
+      <div className="space-status-card space-status-drive"><img className="space-status-icon cloud" src={googleDriveIcon} alt="" /><p>Drive connecté</p></div>
+      <div className="space-status-card space-status-document"><img className="space-status-icon document" src={fileCheckIcon} alt="" /><p>1 document analysé</p></div>
       <div className="space-status-card space-status-growth">
-        <img className="space-status-icon growth" src={spaceReadyGrowthIconImage} alt="" />
+        <img className="space-status-icon growth" src={sproutIcon} alt="" />
         <p><span>Suivi de</span><span>croissance activé</span></p>
       </div>
-      <button className="space-action-row space-action-document" type="button"><span>Ajouter un autre document</span><img src={spaceReadyArrowImage} alt="" /></button>
-      <button className="space-action-row space-action-child" type="button"><span>Ajouter un enfant</span><img src={spaceReadyArrowImage} alt="" /></button>
-      <button className="space-action-row space-action-parent" type="button"><span>Inviter un parent</span><img src={spaceReadyArrowImage} alt="" /></button>
+      <button className="space-action-row space-action-document" type="button"><span>Ajouter un autre document</span><img src={arrowRightActionIcon} alt="" className="space-ready-action-arrow" /></button>
+      <button className="space-action-row space-action-child" type="button"><span>Ajouter un enfant</span><img src={arrowRightActionIcon} alt="" className="space-ready-action-arrow" /></button>
+      <button className="space-action-row space-action-parent" type="button"><span>Inviter un parent</span><img src={arrowRightActionIcon} alt="" className="space-ready-action-arrow" /></button>
       <button className="space-dashboard-button" type="button" onClick={onDashboard}>ALLER AU TABLEAU DE BORD</button>
     </section>
   );
@@ -381,18 +382,18 @@ function DashboardPage() {
         <p className="dashboard-profile-label">Profil</p>
         <div className="dashboard-trial-bar">
           <span>Version d’essai · 28 jours restants</span>
-          <button type="button">S’ABONNER</button>
+          <button type="button">S’ABONNER<img src={crownIcon} alt="" className="dashboard-crown-icon" /></button>
         </div>
         <div className="dashboard-connected-row">
           <span>Martin connecté</span>
           <i aria-hidden="true" />
           <button type="button">Envoyer une invitation</button>
-          <span className="dashboard-invite-icon" aria-hidden="true" />
+          <img className="dashboard-invite-icon" src={inviteIcon} alt="" />
         </div>
         <div className="dashboard-child-selector" aria-label="Sélection enfant">
           <button className="active" type="button"><span>L</span>LUCAS</button>
           <button type="button"><span>E</span>EMMA</button>
-          <button type="button"><span>+</span>Ajouter</button>
+          <button className="dashboard-child-add-button" type="button"><span className="dashboard-child-add-plus" aria-hidden="true" /><span className="dashboard-child-add-label">Ajouter</span></button>
         </div>
       </header>
 
@@ -411,12 +412,12 @@ function DashboardPage() {
             <div className="dashboard-event-row">
               <span className="dashboard-medical-icon"><img src={dentistIcon} alt="" /></span>
               <div><h3>Dentiste</h3><p>12/02/2026 · 10:30 · Rappel 5 j</p></div>
-              <button className="dashboard-row-arrow" type="button" aria-label="Voir le rendez-vous dentiste">›</button>
+              <button className="dashboard-row-arrow" type="button" aria-label="Voir le rendez-vous dentiste"><img src={arrowTriangleIcon} alt="" className="dashboard-row-triangle-arrow" /></button>
             </div>
             <div className="dashboard-event-row">
               <span className="dashboard-medical-icon light"><img src={eyeIcon} alt="" /></span>
               <div><h3>Suivi ophtalmologique</h3><p>05/03/2026 · 14:00 · Rappel 1 sem</p></div>
-              <button className="dashboard-row-arrow" type="button" aria-label="Voir le suivi ophtalmologique">›</button>
+              <button className="dashboard-row-arrow" type="button" aria-label="Voir le suivi ophtalmologique"><img src={arrowTriangleIcon} alt="" className="dashboard-row-triangle-arrow" /></button>
             </div>
             <div className="dashboard-card-links">
               <button type="button"><span className="dashboard-plus-icon" aria-hidden="true">+</span>Ajouter</button>
@@ -428,14 +429,14 @@ function DashboardPage() {
           <div className="dashboard-panel dashboard-planning-card">
             <p className="dashboard-panel-label">A PLANIFIER</p>
             <div className="dashboard-plan-row">
-              <span className="dashboard-medical-icon pink orl-icon" aria-hidden="true" />
+              <span className="dashboard-medical-icon pink"><img src={orlIcon} alt="" /></span>
               <div><h3>ORL</h3><p>Dernier rdv : 20/05/2023</p><strong>À RÉSERVER CETTE SEMAINE</strong></div>
-              <button className="dashboard-row-arrow pink" type="button" aria-label="Planifier ORL">›</button>
+              <button className="dashboard-row-arrow" type="button" aria-label="Planifier ORL"><img src={arrowTriangleIcon} alt="" className="dashboard-row-triangle-arrow dashboard-row-triangle-arrow-planning" /></button>
             </div>
             <div className="dashboard-plan-row">
-              <span className="dashboard-medical-icon pink vaccine-icon" aria-hidden="true" />
+              <span className="dashboard-medical-icon pink"><img src={vaccineIcon} alt="" /></span>
               <div><h3>Vaccin DTP</h3><p>Dernier vaccin : 12/03/2024</p><strong>RAPPEL RECOMMANDÉ À 7 ANS</strong></div>
-              <button className="dashboard-row-arrow pink" type="button" aria-label="Planifier vaccin DTP">›</button>
+              <button className="dashboard-row-arrow" type="button" aria-label="Planifier vaccin DTP"><img src={arrowTriangleIcon} alt="" className="dashboard-row-triangle-arrow dashboard-row-triangle-arrow-planning" /></button>
             </div>
             <div className="dashboard-card-links two">
               <button type="button"><span className="dashboard-plus-icon" aria-hidden="true">+</span>Ajouter</button>
@@ -446,14 +447,14 @@ function DashboardPage() {
 
         <section className="dashboard-mini-grid">
           <div className="dashboard-mini-card growth-card">
-            <h2><span className="growth-title-icon" aria-hidden="true" />CROISSANCE</h2>
+            <h2><img className="dashboard-mini-title-icon" src={sproutIcon} alt="" />CROISSANCE</h2>
             <strong>128 cm</strong>
             <p>+4 cm depuis février</p>
             <div className="dashboard-line-chart" aria-hidden="true"><span className="point a" /><span className="point b" /><span className="point c" /><span className="chart-line one" /><span className="chart-line two" /></div>
             <button type="button">Voir le suivi détaillé</button>
           </div>
           <div className="dashboard-mini-card vaccine-card">
-            <h2><span className="vaccine-title-icon" aria-hidden="true" />VACCINATIONS</h2>
+            <h2><img className="dashboard-mini-title-icon" src={vaccineIcon} alt="" />VACCINATIONS</h2>
             <div className="dashboard-vaccine-circle">3/5<br /><span>à jour</span></div>
             <p>Lucas est à jour sur les vaccins obligatoires.</p>
             <button type="button">Voir le calendrier vaccinal</button>
@@ -468,11 +469,11 @@ function DashboardPage() {
           <div className="dashboard-emergency-card">
             <button className="dashboard-modify-button" type="button">MODIFIER</button>
             <div className="dashboard-emergency-content">
-              <img className="dashboard-child-photo" src={dashboardChildPhoto} alt="" />
+              <img className="dashboard-child-photo" src={userIcon} alt="" />
               <div><h3>Lucas Martin</h3><p>7 ans · 14/05/2019</p></div>
             </div>
             <div className="dashboard-emergency-details">
-              <img className="dashboard-qr" src={dashboardQrIcon} alt="" />
+              <img className="dashboard-qr" src={fileCheckIcon} alt="" />
               <div><span>Groupe</span><strong>A+</strong></div>
               <div><span>Allergies</span><strong>Pénicilline</strong></div>
               <div><span>Conditions</span><strong>Asthme</strong></div>
@@ -487,7 +488,7 @@ function DashboardPage() {
 
         <section className="dashboard-doctors-section">
           <div className="dashboard-block-title doctors-title">
-            <span className="dashboard-doctors-title-icon" aria-hidden="true" />
+            <img className="dashboard-doctors-title-icon" src={userIcon} alt="" />
             <h2>CARNET DE MÉDECINS</h2>
           </div>
           <div className="dashboard-doctors-book">
@@ -506,26 +507,26 @@ function DashboardPage() {
             <small>Vos fichiers restent dans votre Drive. MediKid n’en stocke aucun.</small>
           </div>
           <span className="dashboard-drive-status" />
-          <span className="dashboard-drive-arrow">›</span>
+          <img className="dashboard-drive-arrow" src={arrowRightIcon} alt="" />
         </section>
       </div>
 
       <nav className="dashboard-bottom-nav" aria-label="Navigation du tableau de bord">
         <button className="active" type="button">
           <span className="dashboard-nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M4 10.7 12 4l8 6.7V20a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1v-9.3Z" /></svg>
+            <img src={accueilIcon} alt="" />
           </span>
           Accueil
         </button>
         <button className="dashboard-add-document-tab" type="button">
           <span className="dashboard-add-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M7 3.5h7.6L18 6.9V18a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 5 18V6a2.5 2.5 0 0 1 2-2.5Z" /><path d="M14.5 3.8V7h3.2" /><path d="M12 10v6" /><path d="M9 13h6" /></svg>
+            <img src={addDocumentIcon} alt="" />
           </span>
           Ajouter un document
         </button>
         <button type="button">
           <span className="dashboard-nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2h7A3.5 3.5 0 0 1 19 5.5v6A3.5 3.5 0 0 1 15.5 15H11l-4.4 4.1A1 1 0 0 1 5 18.4V15.1A3.5 3.5 0 0 1 2 11.7V8.5A3.5 3.5 0 0 1 5 5.5Z" /><path d="M15.8 5.8 16.3 4l.6 1.8 1.8.6-1.8.6-.6 1.8-.5-1.8-1.8-.6 1.8-.6ZM9 8.1l.7-2.1.7 2.1 2.1.7-2.1.7-.7 2.1L9 9.5l-2.1-.7L9 8.1Z" /></svg>
+            <img src={iaChatIcon} alt="" />
           </span>
           IA Chat
         </button>
@@ -537,7 +538,7 @@ function DashboardPage() {
 function AddDocumentPlaceholderPage() {
   return (
     <section className="medikid-frame add-document-placeholder-page" aria-label="Ajouter un document">
-      <img className="placeholder-logo" src={connectLogoImage} alt="medikid" />
+      <img className="placeholder-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="placeholder-card"><p>Ajouter un document à créer</p></div>
     </section>
   );
