@@ -5,6 +5,7 @@ import medikidInternalWhiteLogo from './assets/MediKid_logo_white.png';
 import googleIcon from './assets/Google_Favicon_2025.svg 1.svg';
 import appleIcon from './assets/Apple_logo_black.svg 1.svg';
 import googleDriveLogo from './assets/250px-Google_Drive_logo.png';
+import dashboardGoogleDriveLogo from './assets/Google_Drive_icon_(2020).svg';
 import iCloudLogo from './assets/iCloud logo.svg';
 import googleDriveIcon from './assets/Drive_icon.svg';
 import fileCheckIcon from './assets/file-check 1.svg';
@@ -19,6 +20,19 @@ import accueilIcon from './assets/accueil-icon.svg';
 import addDocumentIcon from './assets/ajouter-document-icon.svg';
 import iaChatIcon from './assets/ia-chat-icon.svg';
 import shieldCheckIcon from './assets/shield-check1.svg';
+import emergencyProfileIcon from './assets/profil-urgence.svg';
+import emergencyBloodIcon from './assets/groupe_sanguin.svg';
+import emergencyAllergiesIcon from './assets/Allergies.svg';
+import emergencyConditionsIcon from './assets/Conditions.svg';
+import emergencyTreatmentIcon from './assets/TRAITEMENT.svg';
+import emergencyVaccinesIcon from './assets/Vaccins.svg';
+import emergencyHistoryIcon from './assets/antecedents.svg';
+import emergencyViewProfileIcon from './assets/Voir le profil.svg';
+import emergencyQrIcon from './assets/partager-qr-code.svg';
+import emergencyEditIcon from './assets/modifier.svg';
+import emergencyPrintIcon from './assets/print.svg';
+import kidIcon from './assets/kid.svg';
+import carnetMedecinIcon from './assets/carnetdemedecin.svg';
 import dentistIcon from './assets/dentist-icon.svg';
 import eyeIcon from './assets/eye-icon.svg';
 import orlIcon from './assets/orl_icon.svg';
@@ -373,6 +387,29 @@ function SpaceReadyPage({ onDashboard }) {
 }
 
 function DashboardPage() {
+  const growthData = [
+    { month: "FÃ©v", height: 124 },
+    { month: "Mar", height: 125 },
+    { month: "Avr", height: 126 },
+    { month: "Mai", height: 127 },
+    { month: "Juin", height: 128 },
+  ];
+  const chartWidth = 140;
+  const chartHeight = 55;
+  const chartPaddingX = 8;
+  const chartPaddingY = 8;
+  const growthMin = Math.min(...growthData.map((item) => item.height));
+  const growthMax = Math.max(...growthData.map((item) => item.height));
+  const growthRange = growthMax - growthMin || 1;
+  const growthPoints = growthData.map((item, index) => ({
+    x: chartPaddingX + (index * (chartWidth - chartPaddingX * 2)) / (growthData.length - 1),
+    y: chartHeight - chartPaddingY - ((item.height - growthMin) / growthRange) * (chartHeight - chartPaddingY * 2),
+  }));
+  const growthLinePath = growthPoints
+    .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`)
+    .join(" ");
+  const growthAreaPath = `${growthLinePath} L ${growthPoints[growthPoints.length - 1].x.toFixed(1)} ${chartHeight - 3} L ${growthPoints[0].x.toFixed(1)} ${chartHeight - 3} Z`;
+
   return (
     <section className="medikid-frame dashboard-page" aria-label="Tableau de bord MediKid">
       <header className="dashboard-header">
@@ -450,7 +487,25 @@ function DashboardPage() {
             <h2><img className="dashboard-mini-title-icon" src={sproutIcon} alt="" />CROISSANCE</h2>
             <strong>128 cm</strong>
             <p>+4 cm depuis février</p>
-            <div className="dashboard-line-chart" aria-hidden="true"><span className="point a" /><span className="point b" /><span className="point c" /><span className="chart-line one" /><span className="chart-line two" /></div>
+            <svg className="dashboard-growth-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} aria-hidden="true">
+              <defs>
+                <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#61A889" stopOpacity="0.22" />
+                  <stop offset="100%" stopColor="#61A889" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path className="dashboard-growth-area" d={growthAreaPath} />
+              <path className="dashboard-growth-line" d={growthLinePath} />
+              {growthPoints.map((point, index) => (
+                <circle
+                  key={growthData[index].month}
+                  className="dashboard-growth-point"
+                  cx={point.x}
+                  cy={point.y}
+                  r="3"
+                />
+              ))}
+            </svg>
             <button type="button">Voir le suivi détaillé</button>
           </div>
           <div className="dashboard-mini-card vaccine-card dashboard-vaccine-card">
@@ -477,33 +532,84 @@ function DashboardPage() {
         </section>
 
         <section className="dashboard-emergency-section">
-          <div className="dashboard-block-title">
-            <img src={shieldCheckIcon} alt="" />
-            <h2>PROFIL D’URGENCE</h2>
-          </div>
           <div className="dashboard-emergency-card">
-            <button className="dashboard-modify-button" type="button">MODIFIER</button>
-            <div className="dashboard-emergency-content">
-              <img className="dashboard-child-photo" src={userIcon} alt="" />
-              <div><h3>Lucas Martin</h3><p>7 ans · 14/05/2019</p></div>
+            <div className="dashboard-emergency-title-row">
+              <img className="dashboard-emergency-title-icon" src={emergencyProfileIcon} alt="" />
+              <h2>PROFIL D’URGENCE</h2>
             </div>
-            <div className="dashboard-emergency-details">
-              <img className="dashboard-qr" src={fileCheckIcon} alt="" />
-              <div><span>Groupe</span><strong>A+</strong></div>
-              <div><span>Allergies</span><strong>Pénicilline</strong></div>
-              <div><span>Conditions</span><strong>Asthme</strong></div>
-              <div><span>Carnet</span><strong>à jour</strong></div>
+
+            <div className="dashboard-emergency-child">
+              <div className="dashboard-emergency-avatar">
+                <img src={kidIcon} alt="" />
+              </div>
+              <div>
+                <h3>LUCAS MARTIN</h3>
+                <p>7 ans</p>
+                <p>14/05/2019</p>
+              </div>
             </div>
+
+            <div className="dashboard-emergency-list" aria-label="Informations renseignées">
+              <div className="dashboard-emergency-row">
+                <img className="dashboard-emergency-row-icon" src={emergencyBloodIcon} alt="" />
+                <span>Groupe sanguin</span>
+                <span className="dashboard-emergency-check dashboard-emergency-check-complete"><img src={checkIcon} alt="" /></span>
+              </div>
+              <div className="dashboard-emergency-row">
+                <img className="dashboard-emergency-row-icon" src={emergencyAllergiesIcon} alt="" />
+                <span>Allergies</span>
+                <span className="dashboard-emergency-check dashboard-emergency-check-complete"><img src={checkIcon} alt="" /></span>
+              </div>
+              <div className="dashboard-emergency-row">
+                <img className="dashboard-emergency-row-icon" src={emergencyConditionsIcon} alt="" />
+                <span>Conditions</span>
+                <span className="dashboard-emergency-check dashboard-emergency-check-complete"><img src={checkIcon} alt="" /></span>
+              </div>
+              <div className="dashboard-emergency-row">
+                <img className="dashboard-emergency-row-icon" src={emergencyTreatmentIcon} alt="" />
+                <span>Traitements</span>
+                <span className="dashboard-emergency-check dashboard-emergency-check-complete"><img src={checkIcon} alt="" /></span>
+              </div>
+              <div className="dashboard-emergency-row">
+                <img className="dashboard-emergency-row-icon" src={emergencyVaccinesIcon} alt="" />
+                <span>Vaccins</span>
+                <span className="dashboard-emergency-check dashboard-emergency-check-complete"><img src={checkIcon} alt="" /></span>
+              </div>
+              <div className="dashboard-emergency-row">
+                <img className="dashboard-emergency-row-icon" src={emergencyHistoryIcon} alt="" />
+                <span>Antécédents</span>
+                <span className="dashboard-emergency-check dashboard-emergency-check-missing"><img src={checkIcon} alt="" /></span>
+              </div>
+            </div>
+
             <div className="dashboard-emergency-actions">
-              <button type="button">Partager le QR code</button>
-              <button type="button">Imprimer la carte</button>
+              <button className="dashboard-emergency-action primary" type="button">
+                <img className="dashboard-emergency-primary-icon" src={emergencyViewProfileIcon} alt="" />
+                <span>Voir le profil de sécurité détaillé</span>
+                <img className="dashboard-emergency-action-arrow" src={arrowTriangleIcon} alt="" />
+              </button>
+              <button className="dashboard-emergency-action outline-green" type="button">
+                <img src={emergencyQrIcon} alt="" />
+                <span>Partager le QR code</span>
+                <img className="dashboard-emergency-action-arrow" src={arrowTriangleIcon} alt="" />
+              </button>
+              <button className="dashboard-emergency-action outline-red" type="button">
+                <img src={emergencyEditIcon} alt="" />
+                <span>Modifier</span>
+                <img className="dashboard-emergency-action-arrow" src={arrowTriangleIcon} alt="" />
+              </button>
+              <button className="dashboard-emergency-action outline-green" type="button">
+                <img src={emergencyPrintIcon} alt="" />
+                <span>Imprimer</span>
+                <img className="dashboard-emergency-action-arrow" src={arrowTriangleIcon} alt="" />
+              </button>
             </div>
           </div>
         </section>
 
         <section className="dashboard-doctors-section">
           <div className="dashboard-block-title doctors-title">
-            <img className="dashboard-doctors-title-icon" src={userIcon} alt="" />
+            <img className="dashboard-doctors-title-icon" src={carnetMedecinIcon} alt="" />
             <h2>CARNET DE MÉDECINS</h2>
           </div>
           <div className="dashboard-doctors-book">
@@ -515,19 +621,25 @@ function DashboardPage() {
         </section>
 
         <section className="dashboard-panel dashboard-drive-card">
-          <img src={googleDriveIcon} alt="" />
-          <div>
+          <div className="dashboard-drive-main-row">
+            <img className="dashboard-drive-logo" src={dashboardGoogleDriveLogo} alt="" />
+            <div className="dashboard-drive-text">
             <h2>GOOGLE DRIVE CONNECTÉ</h2>
             <p>127 documents synchronisés</p>
-            <small>Vos fichiers restent dans votre Drive. MediKid n’en stocke aucun.</small>
+            <small className="dashboard-drive-note">
+              Vos fichiers restent dans votre Drive.
+              <br />
+              MediKid n’en stocke aucun.
+            </small>
+            </div>
+            <span className="dashboard-drive-status" />
+            <img className="dashboard-drive-arrow" src={arrowTriangleIcon} alt="" />
           </div>
-          <span className="dashboard-drive-status" />
-          <img className="dashboard-drive-arrow" src={arrowRightIcon} alt="" />
         </section>
       </div>
 
       <nav className="dashboard-bottom-nav" aria-label="Navigation du tableau de bord">
-        <button className="active" type="button">
+        <button className="dashboard-nav-home active" type="button">
           <span className="dashboard-nav-icon" aria-hidden="true">
             <img src={accueilIcon} alt="" />
           </span>
@@ -537,9 +649,9 @@ function DashboardPage() {
           <span className="dashboard-add-icon" aria-hidden="true">
             <img src={addDocumentIcon} alt="" />
           </span>
-          Ajouter un document
+          <span className="dashboard-add-document-label">Ajouter un document</span>
         </button>
-        <button type="button">
+        <button className="dashboard-nav-chat" type="button">
           <span className="dashboard-nav-icon" aria-hidden="true">
             <img src={iaChatIcon} alt="" />
           </span>
