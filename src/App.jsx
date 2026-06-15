@@ -231,21 +231,31 @@ function ConnectCloudPage({ onContinue, onBack }) {
   );
 }
 
-function ScanDocumentPage({ onContinue, onBack }) {
+function ScanDocumentPage({ onContinue, onBack, mode = 'onboarding' }) {
+  const isDashboardMode = mode === 'dashboard';
+
   return (
     <section className="medikid-frame scan-document-page" aria-label="Scannez un document">
       <OnboardingBackButton onBack={onBack} />
       <img className="scan-document-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
-      <div className="scan-progress" aria-label="Étape 3 sur 4">
-        <span className="scan-progress-dot active" />
-        <span className="scan-progress-dot active" />
-        <span className="scan-progress-line" />
-        <span className="scan-progress-dot muted" />
-        <span className="scan-progress-text">3 sur 4</span>
-      </div>
+      {!isDashboardMode && (
+        <div className="scan-progress" aria-label="Étape 3 sur 4">
+          <span className="scan-progress-dot active" />
+          <span className="scan-progress-dot active" />
+          <span className="scan-progress-line" />
+          <span className="scan-progress-dot muted" />
+          <span className="scan-progress-text">3 sur 4</span>
+        </div>
+      )}
       <h1 className="scan-document-title">
-        <span>Ajoutez un premier</span>
-        <span>document</span>
+        {isDashboardMode ? (
+          <span>Ajouter un document</span>
+        ) : (
+          <>
+            <span>Ajoutez un premier</span>
+            <span>document</span>
+          </>
+        )}
       </h1>
       <p className="scan-document-subtitle">
         <span>L&apos;IA pourra extraire les informations</span>
@@ -291,18 +301,22 @@ function ScanDocumentPage({ onContinue, onBack }) {
   );
 }
 
-function AnalyzeDocumentPage({ onContinue, onBack }) {
+function AnalyzeDocumentPage({ onContinue, onBack, mode = 'onboarding' }) {
+  const isDashboardMode = mode === 'dashboard';
+
   return (
     <section className="medikid-frame analyze-document-page" aria-label="Analyse du document">
       <OnboardingBackButton onBack={onBack} />
       <img className="analyze-document-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
-      <div className="analyze-progress" aria-label="Étape 4 sur 4">
-        <span className="analyze-progress-dot active" />
-        <span className="analyze-progress-dot active" />
-        <span className="analyze-progress-dot active" />
-        <span className="analyze-progress-line" />
-        <span className="analyze-progress-text">4 sur 4</span>
-      </div>
+      {!isDashboardMode && (
+        <div className="analyze-progress" aria-label="Étape 4 sur 4">
+          <span className="analyze-progress-dot active" />
+          <span className="analyze-progress-dot active" />
+          <span className="analyze-progress-dot active" />
+          <span className="analyze-progress-line" />
+          <span className="analyze-progress-text">4 sur 4</span>
+        </div>
+      )}
       <h1 className="analyze-document-title">Analyse du document...</h1>
       <div className="analyze-card">
         <div className="analyze-row analyze-row-one">
@@ -325,18 +339,22 @@ function AnalyzeDocumentPage({ onContinue, onBack }) {
   );
 }
 
-function DocumentAnalyzedPage({ onConfirm, onBack }) {
+function DocumentAnalyzedPage({ onConfirm, onBack, mode = 'onboarding' }) {
+  const isDashboardMode = mode === 'dashboard';
+
   return (
     <section className="medikid-frame document-analyzed-page" aria-label="Document analysé">
       <OnboardingBackButton onBack={onBack} />
       <img className="document-analyzed-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
-      <div className="document-analyzed-progress" aria-label="Étape 4 sur 4">
-        <span className="document-analyzed-progress-dot active" />
-        <span className="document-analyzed-progress-dot active" />
-        <span className="document-analyzed-progress-dot active" />
-        <span className="document-analyzed-progress-line" />
-        <span className="document-analyzed-progress-text">4 sur 4</span>
-      </div>
+      {!isDashboardMode && (
+        <div className="document-analyzed-progress" aria-label="Étape 4 sur 4">
+          <span className="document-analyzed-progress-dot active" />
+          <span className="document-analyzed-progress-dot active" />
+          <span className="document-analyzed-progress-dot active" />
+          <span className="document-analyzed-progress-line" />
+          <span className="document-analyzed-progress-text">4 sur 4</span>
+        </div>
+      )}
       <h1 className="document-analyzed-title">
         DOCUMENT ANALYSÉ
         <span className="document-analyzed-title-check"><img src={checkIcon} alt="" /></span>
@@ -399,7 +417,7 @@ function SpaceReadyPage({ onDashboard }) {
   );
 }
 
-function DashboardPage() {
+function DashboardPage({ onAddDocument }) {
   const growthData = [
     { month: "FÃ©v", height: 124 },
     { month: "Mar", height: 125 },
@@ -658,7 +676,7 @@ function DashboardPage() {
           </span>
           Accueil
         </button>
-        <button className="dashboard-add-document-tab" type="button">
+        <button className="dashboard-add-document-tab" type="button" onClick={onAddDocument}>
           <span className="dashboard-add-icon" aria-hidden="true">
             <img src={addDocumentIcon} alt="" />
           </span>
@@ -698,7 +716,10 @@ export default function App() {
       {screen === 'document-analyzed' && <DocumentAnalyzedPage onConfirm={() => setScreen('space-ready')} onBack={() => setScreen('analyze-document')} />}
       {screen === 'space-ready' && <SpaceReadyPage onDashboard={() => setScreen('dashboard')} />}
       {screen === 'add-document-placeholder' && <AddDocumentPlaceholderPage />}
-      {screen === 'dashboard' && <DashboardPage />}
+      {screen === 'dashboard-scan-document' && <ScanDocumentPage mode="dashboard" onContinue={() => setScreen('dashboard-analyze-document')} onBack={() => setScreen('dashboard')} />}
+      {screen === 'dashboard-analyze-document' && <AnalyzeDocumentPage mode="dashboard" onContinue={() => setScreen('dashboard-document-analyzed')} onBack={() => setScreen('dashboard-scan-document')} />}
+      {screen === 'dashboard-document-analyzed' && <DocumentAnalyzedPage mode="dashboard" onConfirm={() => setScreen('dashboard')} onBack={() => setScreen('dashboard-analyze-document')} />}
+      {screen === 'dashboard' && <DashboardPage onAddDocument={() => setScreen('dashboard-scan-document')} />}
     </main>
   );
 }
