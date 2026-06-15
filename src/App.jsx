@@ -47,6 +47,14 @@ import arrowRightIcon from './assets/arrow-right 1.svg';
 import arrowRightActionIcon from './assets/arrow-right 2.svg';
 import arrowTriangleIcon from './assets/arrow_triangle.svg';
 
+function OnboardingBackButton({ onBack }) {
+  return (
+    <button className="onboarding-back-button" type="button" onClick={onBack} aria-label="Retour">
+      <img src={arrowRightIcon} alt="" />
+    </button>
+  );
+}
+
 function LandingPage({ onSignIn }) {
   return (
     <section className="medikid-frame landing-page" aria-label="MediKid landing page">
@@ -131,9 +139,10 @@ function SignInPage({ onAddChild }) {
   );
 }
 
-function AddChildPage({ onContinue }) {
+function AddChildPage({ onContinue, onBack }) {
   return (
     <section className="medikid-frame add-child-page" aria-label="Ajouter un enfant">
+      <OnboardingBackButton onBack={onBack} />
       <img className="add-child-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="add-child-progress" aria-label="Étape 1 sur 4">
         <span className="add-progress-line" />
@@ -172,9 +181,10 @@ function AddChildPage({ onContinue }) {
   );
 }
 
-function ConnectCloudPage({ onContinue }) {
+function ConnectCloudPage({ onContinue, onBack }) {
   return (
     <section className="medikid-frame connect-cloud-page" aria-label="Connectez votre cloud">
+      <OnboardingBackButton onBack={onBack} />
       <img className="connect-cloud-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="connect-progress" aria-label="Étape 2 sur 4">
         <span className="progress-dot" />
@@ -221,9 +231,10 @@ function ConnectCloudPage({ onContinue }) {
   );
 }
 
-function ScanDocumentPage({ onContinue }) {
+function ScanDocumentPage({ onContinue, onBack }) {
   return (
     <section className="medikid-frame scan-document-page" aria-label="Scannez un document">
+      <OnboardingBackButton onBack={onBack} />
       <img className="scan-document-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="scan-progress" aria-label="Étape 3 sur 4">
         <span className="scan-progress-dot active" />
@@ -280,9 +291,10 @@ function ScanDocumentPage({ onContinue }) {
   );
 }
 
-function AnalyzeDocumentPage({ onContinue }) {
+function AnalyzeDocumentPage({ onContinue, onBack }) {
   return (
     <section className="medikid-frame analyze-document-page" aria-label="Analyse du document">
+      <OnboardingBackButton onBack={onBack} />
       <img className="analyze-document-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="analyze-progress" aria-label="Étape 4 sur 4">
         <span className="analyze-progress-dot active" />
@@ -313,9 +325,10 @@ function AnalyzeDocumentPage({ onContinue }) {
   );
 }
 
-function DocumentAnalyzedPage({ onConfirm }) {
+function DocumentAnalyzedPage({ onConfirm, onBack }) {
   return (
     <section className="medikid-frame document-analyzed-page" aria-label="Document analysé">
+      <OnboardingBackButton onBack={onBack} />
       <img className="document-analyzed-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
       <div className="document-analyzed-progress" aria-label="Étape 4 sur 4">
         <span className="document-analyzed-progress-dot active" />
@@ -678,11 +691,11 @@ export default function App() {
     <main className="app-shell">
       {screen === 'landing' && <LandingPage onSignIn={() => setScreen('signin')} />}
       {screen === 'signin' && <SignInPage onAddChild={() => setScreen('add-child')} />}
-      {screen === 'add-child' && <AddChildPage onContinue={() => setScreen('connect-cloud')} />}
-      {screen === 'connect-cloud' && <ConnectCloudPage onContinue={() => setScreen('scan-document')} />}
-      {screen === 'scan-document' && <ScanDocumentPage onContinue={() => setScreen('analyze-document')} />}
-      {screen === 'analyze-document' && <AnalyzeDocumentPage onContinue={() => setScreen('document-analyzed')} />}
-      {screen === 'document-analyzed' && <DocumentAnalyzedPage onConfirm={() => setScreen('space-ready')} />}
+      {screen === 'add-child' && <AddChildPage onContinue={() => setScreen('connect-cloud')} onBack={() => setScreen('signin')} />}
+      {screen === 'connect-cloud' && <ConnectCloudPage onContinue={() => setScreen('scan-document')} onBack={() => setScreen('add-child')} />}
+      {screen === 'scan-document' && <ScanDocumentPage onContinue={() => setScreen('analyze-document')} onBack={() => setScreen('connect-cloud')} />}
+      {screen === 'analyze-document' && <AnalyzeDocumentPage onContinue={() => setScreen('document-analyzed')} onBack={() => setScreen('scan-document')} />}
+      {screen === 'document-analyzed' && <DocumentAnalyzedPage onConfirm={() => setScreen('space-ready')} onBack={() => setScreen('analyze-document')} />}
       {screen === 'space-ready' && <SpaceReadyPage onDashboard={() => setScreen('dashboard')} />}
       {screen === 'add-document-placeholder' && <AddDocumentPlaceholderPage />}
       {screen === 'dashboard' && <DashboardPage />}
