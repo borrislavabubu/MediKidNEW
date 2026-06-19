@@ -20,6 +20,7 @@ import accueilIcon from './assets/accueil-icon.svg';
 import addDocumentIcon from './assets/ajouter-document-icon.svg';
 import iaChatIcon from './assets/ia-chat-icon.svg';
 import shieldCheckIcon from './assets/shield-check1.svg';
+import phoneIcon from './assets/smartphone.svg';
 import emergencyProfileIcon from './assets/profil-urgence.svg';
 import emergencyBloodIcon from './assets/groupe_sanguin.svg';
 import emergencyAllergiesIcon from './assets/Allergies.svg';
@@ -34,6 +35,7 @@ import emergencyPrintIcon from './assets/print.svg';
 import kidIcon from './assets/kid.svg';
 import carnetMedecinIcon from './assets/carnetdemedecin.svg';
 import fingerprintIcon from './assets/fingerprint.svg';
+import mobileUnlockIcon from './assets/mobile_unlock_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg';
 import dentistIcon from './assets/dentist-icon.svg';
 import eyeIcon from './assets/eye-icon.svg';
 import orlIcon from './assets/orl_icon.svg';
@@ -418,7 +420,7 @@ function SpaceReadyPage({ onDashboard }) {
   );
 }
 
-function SecureVerificationPage({ onBack, onVerified }) {
+function SecureVerificationPage({ onBack, onVerified, onUseDeviceCode }) {
   const [biometricActive, setBiometricActive] = useState(false);
 
   const handleBiometricCheck = () => {
@@ -453,7 +455,7 @@ function SecureVerificationPage({ onBack, onVerified }) {
         </p>
         <h2>Accès protégé</h2>
         <p>Profil d’urgence détaillé de Lucas Martin</p>
-        <button className="secure-secondary-button" type="button" onClick={onVerified}>Utiliser le code de l’appareil</button>
+        <button className="secure-secondary-button" type="button" onClick={onUseDeviceCode}>Utiliser le code de l’appareil</button>
         <small>Face ID, empreinte digitale ou code de l’appareil</small>
       </div>
 
@@ -465,15 +467,235 @@ function SecureVerificationPage({ onBack, onVerified }) {
   );
 }
 
+function DeviceCodePage({ onBack, onVerified }) {
+  const [deviceCode, setDeviceCode] = useState('');
+  const [codeVerifying, setCodeVerifying] = useState(false);
+  const keypadValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  const completeCode = () => {
+    if (codeVerifying) {
+      return;
+    }
+
+    setCodeVerifying(true);
+    window.setTimeout(onVerified, 500);
+  };
+
+  const handleNumber = (value) => {
+    if (codeVerifying || deviceCode.length >= 6) {
+      return;
+    }
+
+    const nextCode = `${deviceCode}${value}`;
+    setDeviceCode(nextCode);
+
+    if (nextCode.length === 6) {
+      window.setTimeout(completeCode, 500);
+    }
+  };
+
+  const handleDelete = () => {
+    if (codeVerifying) {
+      return;
+    }
+
+    setDeviceCode((currentCode) => currentCode.slice(0, -1));
+  };
+
+  const handleOk = () => {
+    if (deviceCode.length > 0) {
+      completeCode();
+    }
+  };
+
+  return (
+    <section className="medikid-frame device-code-page" aria-label="Code de l'appareil">
+      <OnboardingBackButton onBack={onBack} />
+      <img className="secure-verification-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
+      <h1 className="device-code-title">ENTREZ LE CODE</h1>
+      <p className="device-code-subtitle">
+        Utilisez le code de votre appareil pour accéder au profil d’urgence détaillé.
+      </p>
+
+      <div className="device-code-card">
+        <div className="device-code-icon">
+          <img src={mobileUnlockIcon} alt="" />
+        </div>
+        <h2>Code de l’appareil</h2>
+        <p>Saisissez votre code pour continuer</p>
+
+        <div className="device-code-dots" aria-label={`${deviceCode.length} chiffre saisi sur 6`}>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <span key={index} className={index < deviceCode.length ? 'filled' : ''} />
+          ))}
+        </div>
+
+        <div className="device-code-keypad" aria-label="Clavier numérique">
+          {keypadValues.map((value) => (
+            <button key={value} type="button" onClick={() => handleNumber(value)}>{value}</button>
+          ))}
+          <button className="device-code-key-action" type="button" onClick={handleDelete}>Effacer</button>
+          <button type="button" onClick={() => handleNumber('0')}>0</button>
+          <button className="device-code-key-action" type="button" onClick={handleOk}>OK</button>
+        </div>
+
+        {codeVerifying && <small>Vérification...</small>}
+      </div>
+
+      <p className="secure-reassurance">
+        <span><img src={shieldCheckIcon} alt="" /></span>
+        Vos informations sensibles restent protégées.
+      </p>
+    </section>
+  );
+}
+
 function EmergencyProfileDetailPage({ onBack }) {
+  const detailSections = [
+    {
+      icon: emergencyBloodIcon,
+      title: 'GROUPE SANGUIN',
+      content: <strong className="emergency-detail-blood-value">AB+</strong>,
+    },
+    {
+      icon: emergencyAllergiesIcon,
+      title: 'ALLERGIES',
+      lines: ['Arachides', 'Pénicilline'],
+    },
+    {
+      icon: emergencyConditionsIcon,
+      title: 'CONDITIONS',
+      lines: ['Asthme'],
+    },
+    {
+      icon: emergencyHistoryIcon,
+      title: 'PRÉDISPOSITIONS GÉNÉTIQUES',
+      lines: ['Diabète familial'],
+    },
+  ];
+
+  const treatments = [
+    {
+      status: 'current',
+      label: 'Anagline, 2 fois par jour',
+      dates: '11.04.2026 - 20.04.2026',
+    },
+    {
+      status: 'past',
+      label: 'Anagline, 2 fois par jour',
+      dates: '11.04.2025 - 20.04.2025',
+    },
+  ];
+
+  const vaccines = [
+    {
+      name: 'Hexatime',
+      dates: ['20.10.2018'],
+    },
+    {
+      name: 'Habnd',
+      dates: ['20.10.2026', '24.11.2026'],
+    },
+  ];
+
   return (
     <section className="medikid-frame emergency-detail-page" aria-label="Profil d'urgence détaillé">
       <OnboardingBackButton onBack={onBack} />
       <img className="secure-verification-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
-      <div className="emergency-detail-card">
-        <h1>Profil d’urgence détaillé</h1>
-        <p>Accès sécurisé confirmé pour Lucas Martin.</p>
-      </div>
+      <main className="emergency-detail-content">
+        <header className="emergency-detail-hero">
+          <img src={emergencyProfileIcon} alt="" className="emergency-detail-hero-icon" />
+          <div>
+            <p className="emergency-detail-kicker">ACCÈS SÉCURISÉ</p>
+            <h1>Profil d’urgence détaillé</h1>
+            <p>Lucas Martin · 7 ans · 14/05/2019</p>
+          </div>
+        </header>
+
+        <div className="emergency-detail-grid">
+          {detailSections.map((section) => (
+            <section className="emergency-detail-card" key={section.title}>
+              <div className="emergency-detail-section-heading">
+                <img src={section.icon} alt="" className="emergency-detail-section-icon" />
+                <h2>{section.title}</h2>
+              </div>
+              <div className="emergency-detail-body">
+                {section.content || section.lines.map((line) => <p key={line}>{line}</p>)}
+              </div>
+            </section>
+          ))}
+
+          <section className="emergency-detail-card emergency-detail-card-wide">
+            <div className="emergency-detail-section-heading">
+              <img src={emergencyTreatmentIcon} alt="" className="emergency-detail-section-icon" />
+              <h2>TRAITEMENTS</h2>
+            </div>
+            <div className="emergency-detail-treatment-list">
+              {treatments.map((treatment) => (
+                <article
+                  className={`emergency-detail-treatment emergency-detail-treatment-${treatment.status}`}
+                  key={`${treatment.status}-${treatment.dates}`}
+                >
+                  <span className="emergency-detail-check" aria-hidden="true">✓</span>
+                  <div>
+                    <p>{treatment.label}</p>
+                    <small>{treatment.dates}</small>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="emergency-detail-card emergency-detail-card-wide">
+            <div className="emergency-detail-section-heading">
+              <img src={emergencyVaccinesIcon} alt="" className="emergency-detail-section-icon" />
+              <h2>VACCINS</h2>
+            </div>
+            <div className="emergency-detail-vaccine-list">
+              {vaccines.map((vaccine) => (
+                <article className="emergency-detail-vaccine" key={vaccine.name}>
+                  <p>{vaccine.name}</p>
+                  <div>
+                    {vaccine.dates.map((date) => <span key={date}>{date}</span>)}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="emergency-detail-card emergency-detail-contact-card">
+            <div className="emergency-detail-section-heading">
+              <img src={shieldCheckIcon} alt="" className="emergency-detail-section-icon" />
+              <h2>CONTACT D’URGENCE</h2>
+            </div>
+            <div className="emergency-detail-call-row">
+              <div>
+                <p>Marie Martin</p>
+                <span>06 00 00 00 00</span>
+              </div>
+              <button type="button" aria-label="Appeler Marie Martin">
+                <img src={phoneIcon} alt="" />
+              </button>
+            </div>
+          </section>
+
+          <section className="emergency-detail-card emergency-detail-contact-card">
+            <div className="emergency-detail-section-heading">
+              <img src={carnetMedecinIcon} alt="" className="emergency-detail-section-icon" />
+              <h2>MÉDECIN</h2>
+            </div>
+            <div className="emergency-detail-call-row">
+              <div>
+                <p>Dr Sophie Mercier</p>
+                <span>02 00 00 00 00</span>
+              </div>
+              <button type="button" aria-label="Appeler Dr Sophie Mercier">
+                <img src={phoneIcon} alt="" />
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
     </section>
   );
 }
@@ -780,7 +1002,8 @@ export default function App() {
       {screen === 'dashboard-scan-document' && <ScanDocumentPage mode="dashboard" onContinue={() => setScreen('dashboard-analyze-document')} onBack={() => setScreen('dashboard')} />}
       {screen === 'dashboard-analyze-document' && <AnalyzeDocumentPage mode="dashboard" onContinue={() => setScreen('dashboard-document-analyzed')} onBack={() => setScreen('dashboard-scan-document')} />}
       {screen === 'dashboard-document-analyzed' && <DocumentAnalyzedPage mode="dashboard" onConfirm={() => setScreen('dashboard')} onBack={() => setScreen('dashboard-analyze-document')} />}
-      {screen === 'secure-verification' && <SecureVerificationPage onBack={() => setScreen('dashboard')} onVerified={() => setScreen('emergency-detail')} />}
+      {screen === 'secure-verification' && <SecureVerificationPage onBack={() => setScreen('dashboard')} onVerified={() => setScreen('emergency-detail')} onUseDeviceCode={() => setScreen('device-code')} />}
+      {screen === 'device-code' && <DeviceCodePage onBack={() => setScreen('secure-verification')} onVerified={() => setScreen('emergency-detail')} />}
       {screen === 'emergency-detail' && <EmergencyProfileDetailPage onBack={() => setScreen('secure-verification')} />}
       {screen === 'dashboard' && <DashboardPage onAddDocument={() => setScreen('dashboard-scan-document')} onOpenEmergencyProfile={() => setScreen('secure-verification')} />}
     </main>
