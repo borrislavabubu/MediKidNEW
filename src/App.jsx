@@ -33,6 +33,7 @@ import emergencyEditIcon from './assets/modifier.svg';
 import emergencyPrintIcon from './assets/print.svg';
 import kidIcon from './assets/kid.svg';
 import carnetMedecinIcon from './assets/carnetdemedecin.svg';
+import fingerprintIcon from './assets/fingerprint.svg';
 import dentistIcon from './assets/dentist-icon.svg';
 import eyeIcon from './assets/eye-icon.svg';
 import orlIcon from './assets/orl_icon.svg';
@@ -417,7 +418,67 @@ function SpaceReadyPage({ onDashboard }) {
   );
 }
 
-function DashboardPage({ onAddDocument }) {
+function SecureVerificationPage({ onBack, onVerified }) {
+  const [biometricActive, setBiometricActive] = useState(false);
+
+  const handleBiometricCheck = () => {
+    if (biometricActive) {
+      return;
+    }
+
+    setBiometricActive(true);
+    window.setTimeout(onVerified, 900);
+  };
+
+  return (
+    <section className="medikid-frame secure-verification-page" aria-label="Vérification sécurisée">
+      <OnboardingBackButton onBack={onBack} />
+      <img className="secure-verification-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
+      <h1 className="secure-verification-title">VÉRIFICATION SÉCURISÉE</h1>
+      <p className="secure-verification-subtitle">
+        Avant d’accéder au profil d’urgence détaillé, confirmez votre identité.
+      </p>
+
+      <div className="secure-verification-card">
+        <button
+          className={`secure-biometric-icon biometric-fingerprint-button${biometricActive ? ' is-active' : ''}`}
+          type="button"
+          onClick={handleBiometricCheck}
+          aria-label="Confirmer avec la biométrie"
+        >
+          <img className="biometric-fingerprint-icon" src={fingerprintIcon} alt="" />
+        </button>
+        <p className="secure-biometric-status">
+          {biometricActive ? 'Vérification...' : 'Touchez pour confirmer votre identité'}
+        </p>
+        <h2>Accès protégé</h2>
+        <p>Profil d’urgence détaillé de Lucas Martin</p>
+        <button className="secure-secondary-button" type="button" onClick={onVerified}>Utiliser le code de l’appareil</button>
+        <small>Face ID, empreinte digitale ou code de l’appareil</small>
+      </div>
+
+      <p className="secure-reassurance">
+        <span><img src={shieldCheckIcon} alt="" /></span>
+        Vos informations sensibles restent protégées.
+      </p>
+    </section>
+  );
+}
+
+function EmergencyProfileDetailPage({ onBack }) {
+  return (
+    <section className="medikid-frame emergency-detail-page" aria-label="Profil d'urgence détaillé">
+      <OnboardingBackButton onBack={onBack} />
+      <img className="secure-verification-logo medikid-page-logo" src={medikidInternalWhiteLogo} alt="MediKid" />
+      <div className="emergency-detail-card">
+        <h1>Profil d’urgence détaillé</h1>
+        <p>Accès sécurisé confirmé pour Lucas Martin.</p>
+      </div>
+    </section>
+  );
+}
+
+function DashboardPage({ onAddDocument, onOpenEmergencyProfile }) {
   const growthData = [
     { month: "FÃ©v", height: 124 },
     { month: "Mar", height: 125 },
@@ -614,7 +675,7 @@ function DashboardPage({ onAddDocument }) {
             </div>
 
             <div className="dashboard-emergency-actions">
-              <button className="dashboard-emergency-action primary" type="button">
+              <button className="dashboard-emergency-action primary" type="button" onClick={onOpenEmergencyProfile}>
                 <img className="dashboard-emergency-primary-icon" src={emergencyViewProfileIcon} alt="" />
                 <span>Voir le profil de sécurité détaillé</span>
                 <img className="dashboard-emergency-action-arrow" src={arrowTriangleIcon} alt="" />
@@ -719,7 +780,9 @@ export default function App() {
       {screen === 'dashboard-scan-document' && <ScanDocumentPage mode="dashboard" onContinue={() => setScreen('dashboard-analyze-document')} onBack={() => setScreen('dashboard')} />}
       {screen === 'dashboard-analyze-document' && <AnalyzeDocumentPage mode="dashboard" onContinue={() => setScreen('dashboard-document-analyzed')} onBack={() => setScreen('dashboard-scan-document')} />}
       {screen === 'dashboard-document-analyzed' && <DocumentAnalyzedPage mode="dashboard" onConfirm={() => setScreen('dashboard')} onBack={() => setScreen('dashboard-analyze-document')} />}
-      {screen === 'dashboard' && <DashboardPage onAddDocument={() => setScreen('dashboard-scan-document')} />}
+      {screen === 'secure-verification' && <SecureVerificationPage onBack={() => setScreen('dashboard')} onVerified={() => setScreen('emergency-detail')} />}
+      {screen === 'emergency-detail' && <EmergencyProfileDetailPage onBack={() => setScreen('secure-verification')} />}
+      {screen === 'dashboard' && <DashboardPage onAddDocument={() => setScreen('dashboard-scan-document')} onOpenEmergencyProfile={() => setScreen('secure-verification')} />}
     </main>
   );
 }

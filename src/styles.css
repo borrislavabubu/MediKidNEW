@@ -277,7 +277,9 @@ svg {
 .add-child-page,
 .connect-cloud-page,
 .analyze-document-page,
-.document-analyzed-page {
+.document-analyzed-page,
+.secure-verification-page,
+.emergency-detail-page {
   background: linear-gradient(0deg, #f2cbd3 0%, #acdfc9 100%);
 }
 
@@ -1329,6 +1331,189 @@ svg {
   top: 545px;
   height: 105px;
   padding: 16px 24px;
+}
+
+.secure-verification-logo {
+  position: absolute;
+  left: 50%;
+  top: 74px;
+  transform: translateX(-50%);
+  width: 118px;
+  height: auto;
+}
+
+.secure-verification-title {
+  position: absolute;
+  left: 50%;
+  top: 190px;
+  width: 320px;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #2d342d;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.secure-verification-subtitle {
+  position: absolute;
+  left: 50%;
+  top: 238px;
+  width: 306px;
+  transform: translateX(-50%);
+  margin: 0;
+  color: rgba(45, 52, 45, 0.74);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.secure-verification-card {
+  position: absolute;
+  left: 30px;
+  top: 332px;
+  width: 333px;
+  min-height: 318px;
+  padding: 28px 22px 24px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 18px 40px rgba(45, 52, 45, 0.14);
+  text-align: center;
+}
+
+.secure-biometric-icon {
+  width: 108px;
+  height: 108px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(173, 222, 201, 0.45);
+  color: #51b88c;
+}
+
+.biometric-fingerprint-icon {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter 180ms ease;
+}
+
+.biometric-fingerprint-button.is-active .biometric-fingerprint-icon {
+  filter: brightness(0) saturate(100%) invert(58%) sepia(41%) saturate(639%) hue-rotate(103deg) brightness(91%) contrast(87%);
+}
+
+.secure-verification-card .secure-biometric-status {
+  margin: 0 0 17px;
+  color: rgba(45, 52, 45, 0.72);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+.secure-verification-card h2 {
+  margin: 0;
+  color: #2d342d;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.secure-verification-card p {
+  margin: 9px 0 22px;
+  color: rgba(45, 52, 45, 0.72);
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.secure-primary-button,
+.secure-secondary-button {
+  width: 286px;
+  height: 42px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.secure-primary-button {
+  background: #97c4b3;
+  color: #ffffff;
+}
+
+.secure-secondary-button {
+  margin-top: 10px;
+  border: 1px solid #97c4b3;
+  background: rgba(255, 255, 255, 0.42);
+  color: #61a889;
+}
+
+.secure-verification-card small {
+  display: block;
+  margin-top: 15px;
+  color: rgba(45, 52, 45, 0.58);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.secure-reassurance {
+  position: absolute;
+  left: 50%;
+  bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateX(-50%);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 13px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.secure-reassurance span {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.secure-reassurance img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.emergency-detail-card {
+  position: absolute;
+  left: 32px;
+  top: 285px;
+  width: 329px;
+  padding: 34px 24px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 40px rgba(45, 52, 45, 0.14);
+  color: #2d342d;
+  text-align: center;
+}
+
+.emergency-detail-card h1 {
+  margin: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.emergency-detail-card p {
+  margin: 14px 0 0;
+  font-size: 15px;
+  font-weight: 300;
 }
 
 .document-action-line {
